@@ -33,13 +33,13 @@ const Button = ({ children, variant = 'primary', className = '', icon: Icon, ...
   const baseStyle = "inline-flex items-center justify-center px-6 py-3 text-base font-bold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black";
   
   const variants = {
-    primary: `bg-[${COLORS.magenta}] hover:opacity-90 text-white shadow-lg shadow-[${COLORS.magenta}]/30 border border-transparent`,
+    primary: `hover:opacity-90 text-white shadow-lg border border-transparent`,
     secondary: "bg-zinc-900 hover:bg-zinc-800 text-white border border-zinc-800",
     outline: `bg-transparent hover:bg-zinc-900 text-[${COLORS.green}] border border-[${COLORS.green}]/50 hover:border-[${COLORS.green}]`,
     glow: `bg-gradient-to-r from-[${COLORS.magenta}] to-[${COLORS.green}] text-white hover:opacity-90 shadow-lg shadow-[${COLORS.magenta}]/20 border border-transparent`
   };
 
-  const style = variant === 'primary' ? { backgroundColor: COLORS.magenta, boxShadow: `0 10px 25px -5px ${COLORS.magenta}50` } :
+  const style = variant === 'primary' ? { backgroundColor: 'rgb(214, 12, 189)', boxShadow: '0 10px 25px -5px rgba(214, 12, 189, 0.3)' } :
                 variant === 'glow' ? { backgroundImage: `linear-gradient(to right, ${COLORS.magenta}, #b00b9e)` } : 
                 variant === 'outline' ? { color: COLORS.green, borderColor: COLORS.green } : {};
 
@@ -282,7 +282,7 @@ export default function LandingPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button variant="secondary" className="hidden md:flex text-sm py-2 px-4 h-9" icon={Download}>
+            <Button variant="primary" className="hidden md:flex text-sm py-2 px-4 h-9" icon={Download}>
               Add to Chrome
             </Button>
           </div>
