@@ -12,9 +12,6 @@ import {
   Download,
   History,
   Settings,
-  Image as ImageIcon,
-  X,
-  ZoomIn,
   Tags,
   Mail,
   Shield,
@@ -104,122 +101,318 @@ const CodeSnippet = ({ label, code }) => (
   </div>
 );
 
-// --- Demo Interactive (App Interface Mockup) ---
+// --- Browser Mockup with Extension Demo ---
 
-const DemoPlayground = () => {
-  const [activeColor, setActiveColor] = useState(COLORS.magenta);
-  const [copied, setCopied] = useState(false);
-  const [activeTab, setActiveTab] = useState('picker');
-
-  const handleCopy = () => {
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
+const BrowserMockup = () => {
   return (
-    <div className="relative w-full max-w-2xl mx-auto bg-zinc-950 border border-zinc-800 rounded-xl shadow-2xl overflow-hidden flex h-[400px]">
-      
-      {/* Sidebar Vertical */}
-      <div className="w-16 bg-black border-r border-zinc-800 flex flex-col items-center py-4 gap-6">
-        <div 
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-xs shadow-lg"
-          style={{ backgroundColor: COLORS.magenta }}
-        >
-          IL
-        </div>
-        <div className="flex flex-col gap-4 w-full px-2">
-          <button 
-            onClick={() => setActiveTab('picker')}
-            className={`p-2 rounded-lg transition-colors ${activeTab === 'picker' ? 'bg-zinc-800 text-[#d60cbd]' : 'text-zinc-500 hover:text-zinc-300'}`}
-          >
-            <Pipette size={20} />
-          </button>
-          <button className="p-2 text-zinc-500 hover:text-zinc-300 rounded-lg transition-colors">
-            <History size={20} />
-          </button>
-          <button className="p-2 text-zinc-500 hover:text-zinc-300 rounded-lg transition-colors">
-            <Palette size={20} />
-          </button>
-        </div>
-        <div className="mt-auto pb-2">
-          <button className="p-2 text-zinc-500 hover:text-zinc-300 rounded-lg transition-colors">
-            <Settings size={20} />
-          </button>
-        </div>
-      </div>
-
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col bg-[#050505]">
+    <div className="relative w-full max-w-3xl mx-auto">
+      {/* Browser Window */}
+      <div className="bg-zinc-900 rounded-2xl shadow-2xl overflow-hidden border border-zinc-700">
         
-        {/* Header with "Tips" */}
-        <div className="h-12 border-b border-zinc-800 bg-zinc-950 flex items-center justify-between px-4">
-          <div className="flex items-center gap-2 overflow-hidden">
-            <span className="text-xs font-bold px-2 py-0.5 rounded bg-[#05d723]/10 text-[#05d723] border border-[#05d723]/20 whitespace-nowrap">
-              TIP
-            </span>
-            <p className="text-xs text-zinc-400 truncate">
-              Press <kbd className="font-mono bg-zinc-800 px-1 rounded border border-zinc-700 text-white">Space</kbd> to capture.
-            </p>
-          </div>
+        {/* Browser Header */}
+        <div className="bg-zinc-950 border-b border-zinc-800 px-4 py-3 flex items-center gap-3">
+          {/* Traffic lights */}
           <div className="flex gap-2">
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: COLORS.green }}></div>
+            <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+          </div>
+          
+          {/* Address Bar */}
+          <div className="flex-1 flex items-center gap-2 bg-zinc-900 rounded-lg px-4 py-2 border border-zinc-800">
+            <div className="w-4 h-4 rounded-full bg-zinc-700 flex items-center justify-center">
+              <div className="w-2 h-2 rounded-full bg-zinc-500"></div>
+            </div>
+            <span className="text-sm text-zinc-400 font-mono">irolab.app</span>
+          </div>
+          
+          {/* Extension Icon */}
+          <div className="relative">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#d60cbd] to-[#b00b9e] flex items-center justify-center shadow-lg shadow-[#d60cbd]/30 ring-2 ring-[#d60cbd]/50">
+              <img 
+                src="/pipette-icon.svg" 
+                alt="IROLAB Extension" 
+                className="w-5 h-5"
+              />
+            </div>
+            {/* Active indicator */}
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#05d723] rounded-full border-2 border-zinc-950 animate-pulse"></div>
           </div>
         </div>
 
-        {/* Content Body */}
-        <div className="flex-1 p-6 overflow-y-auto">
-          <div className="max-w-md mx-auto space-y-6">
-            
-            {/* Main Color Block */}
-            <div className="bg-zinc-900 p-4 rounded-xl border border-zinc-800 shadow-xl relative overflow-hidden">
-               {/* Decorative glow behind */}
-               <div className="absolute top-0 right-0 w-32 h-32 rounded-full blur-[50px] opacity-10 pointer-events-none" style={{ backgroundColor: COLORS.magenta }}></div>
+        {/* Browser Body with Extension Interface */}
+        <div className="relative bg-zinc-950 overflow-hidden">
+          {/* Background pattern to simulate webpage */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-8 left-8 w-32 h-4 bg-zinc-700 rounded"></div>
+            <div className="absolute top-16 left-8 w-48 h-3 bg-zinc-800 rounded"></div>
+            <div className="absolute top-24 left-8 w-64 h-20 bg-zinc-800 rounded"></div>
+            <div className="absolute top-52 right-8 w-40 h-40 bg-zinc-800 rounded-lg"></div>
+          </div>
 
-               <div className="flex justify-between items-center mb-4 relative z-10">
-                 <h3 className="text-sm font-medium text-zinc-300">Active Color</h3>
-                 <span className="text-xs text-zinc-500 font-mono">OKLCH / HEX</span>
-               </div>
-               
-               <div 
-                  className="h-24 rounded-lg flex items-center justify-center cursor-pointer transition-transform active:scale-[0.98] group relative border border-zinc-700/50"
-                  style={{ backgroundColor: activeColor }}
-                  onClick={handleCopy}
-               >
-                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 backdrop-blur-[2px] rounded-lg">
-                    <span className="bg-black text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1 border border-zinc-700">
-                      {copied ? <Check size={12} className="text-[#05d723]" /> : <Copy size={12}/>} 
-                      {copied ? 'COPIED' : 'COPY'}
-                    </span>
-                 </div>
-               </div>
+          {/* Extension Popup Overlay */}
+          <div className="relative py-8 px-4 flex justify-center">
+            <div className="w-full max-w-sm">
+              {/* Extension Interface Image */}
+              <img 
+                src="/demo/extension-interface.png" 
+                alt="IROLAB Extension Interface" 
+                className="w-full h-auto rounded-2xl shadow-2xl shadow-[#d60cbd]/50 border-4 border-[#d60cbd]"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              
+              {/* Fallback UI if image not found */}
+              <div className="hidden flex-col bg-gradient-to-b from-[#84cc16] via-[#a3e635] to-[#84cc16] rounded-2xl shadow-2xl border-4 border-[#d60cbd] ring-2 ring-[#d60cbd]/50 overflow-hidden max-h-[800px]">
+                {/* Header with Ko-fi button */}
+                <div className="bg-black px-4 py-3 flex items-center justify-between border-b-2 border-zinc-700">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#d60cbd] to-[#b00b9e] flex items-center justify-center">
+                      <span className="text-white font-bold text-xs">IL</span>
+                    </div>
+                    <span className="font-bold text-white text-lg">IROLAB</span>
+                  </div>
+                  <button className="px-3 py-1.5 bg-[#29abe0] hover:bg-[#1a8bb8] text-white text-xs rounded-lg font-medium transition-colors flex items-center gap-1">
+                    ☕ Support me on Ko-fi
+                  </button>
+                  <button className="p-1 text-zinc-500 hover:text-zinc-300">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </button>
+                </div>
 
-               <div className="mt-4 grid grid-cols-2 gap-2 relative z-10">
-                 <div className="bg-black/50 p-2 rounded border border-zinc-800 text-center">
-                   <div className="text-[10px] text-zinc-500 uppercase tracking-wider mb-1">Hex</div>
-                   <div className="font-mono text-sm text-zinc-200">{activeColor}</div>
-                 </div>
-                 <div className="bg-black/50 p-2 rounded border border-zinc-800 text-center">
-                   <div className="text-[10px] text-zinc-500 uppercase tracking-wider mb-1">HSL</div>
-                   <div className="font-mono text-sm text-zinc-200">239, 84%, 67%</div>
-                 </div>
-               </div>
-            </div>
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto">
+                  <div className="p-4 space-y-4">
+                    
+                    {/* Color Selection Section */}
+                    <div className="bg-white/95 rounded-xl p-4 border-2 border-zinc-300 shadow-lg">
+                      <h3 className="text-black font-bold mb-3">Color Selection</h3>
+                      <button className="w-full py-3 bg-[#d60cbd] hover:bg-[#b00b9e] text-white rounded-lg font-medium transition-colors mb-2 flex items-center justify-center gap-2">
+                        <Pipette size={18} />
+                        Pick a Color
+                      </button>
+                      <div className="text-center text-zinc-600 text-sm my-2">OR</div>
+                      <button className="w-full py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <circle cx="12" cy="12" r="3"/>
+                          <path d="M12 1v6m0 6v6m6-6h6M1 12h6"/>
+                        </svg>
+                        Extract Site Colors
+                      </button>
+                      
+                      <div className="mt-4">
+                        <h4 className="text-xs text-zinc-600 uppercase mb-2 font-semibold">Recent Colors</h4>
+                        <div className="grid grid-cols-8 gap-1.5">
+                          {[COLORS.magenta, '#c47ac0', '#e88388', '#6ee787', '#996633', '#3b82f6', '#84cc16', '#dc2626'].map((color, i) => (
+                            <div 
+                              key={i}
+                              className="aspect-square rounded border-2 border-zinc-700"
+                              style={{ backgroundColor: color }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
 
-            {/* Quick History Grid */}
-            <div>
-              <h4 className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-3 pl-1">Recent</h4>
-              <div className="grid grid-cols-6 gap-2">
-                {[COLORS.magenta, COLORS.green, '#f59e0b', '#ef4444', '#3b82f6', '#0ea5e9', '#8b5cf6', '#14b8a6'].map((c, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveColor(c)}
-                    className={`aspect-square rounded-md border border-zinc-800 hover:border-zinc-500 transition-all hover:scale-110 ${activeColor === c ? 'ring-2 ring-white ring-offset-2 ring-offset-black' : ''}`}
-                    style={{ backgroundColor: c }}
-                  />
-                ))}
+                    {/* Test Area Section */}
+                    <div className="bg-white/95 rounded-xl p-4 border-2 border-zinc-300 shadow-lg">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-black font-bold">Test Area</h3>
+                        <button className="text-xs px-2 py-1 bg-zinc-200 text-zinc-700 rounded flex items-center gap-1 hover:bg-zinc-300 transition-colors">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                          Open in detached mode
+                        </button>
+                      </div>
+                      
+                      {/* Interactive Test Panel */}
+                      <div className="bg-[#d60cbd] rounded-lg p-6 relative">
+                        <div className="flex items-center gap-2 mb-4">
+                          <button className="p-1.5 bg-white rounded text-black">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                              <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            </svg>
+                          </button>
+                          <button className="p-1.5 bg-white/20 rounded text-white">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/>
+                            </svg>
+                          </button>
+                        </div>
+                        
+                        <h4 className="text-black font-bold text-xl mb-2">Section Title</h4>
+                        <button className="px-3 py-1.5 bg-white/20 text-white text-xs rounded mb-3 inline-flex items-center gap-1">
+                          A <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                        </button>
+                        
+                        <p className="text-black text-sm mb-4">
+                          This is an example text in the test area. You can see how colors interact together and test different combinations to create harmonious palettes.
+                        </p>
+                        
+                        <div className="bg-blue-800 rounded-lg p-3 flex items-center justify-between">
+                          <span className="text-white text-sm font-medium">Test Button</span>
+                          <div className="flex gap-2">
+                            <button className="p-1 bg-white rounded text-blue-800">
+                              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+                            </button>
+                            <button className="p-1 bg-white/20 rounded text-white">
+                              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Palette Controls */}
+                      <div className="mt-3 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-zinc-600 font-medium">Used Palette</span>
+                          <button className="p-1 text-zinc-500 hover:text-zinc-700">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <circle cx="12" cy="12" r="10"/>
+                              <path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <div className="flex gap-1">
+                          <button className="p-1.5 text-zinc-500 hover:text-zinc-700">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" /></svg>
+                          </button>
+                          <button className="p-1.5 text-zinc-500 hover:text-zinc-700">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+                          </button>
+                          <button className="p-1.5 text-zinc-500 hover:text-zinc-700">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Palette Sections */}
+                      <div className="mt-3 grid grid-cols-3 gap-2">
+                        <button className="px-3 py-2 bg-orange-600 text-white rounded-lg text-xs font-medium flex items-center justify-center gap-1">
+                          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+                          Section
+                        </button>
+                        <button className="px-3 py-2 bg-[#d60cbd] text-white rounded-lg text-xs font-medium flex items-center justify-center gap-1">
+                          + Section
+                        </button>
+                        <button className="px-3 py-2 bg-black text-white rounded-lg text-xs font-medium flex items-center justify-center gap-1">
+                          ■ Section
+                        </button>
+                        <button className="px-3 py-2 bg-blue-700 text-white rounded-lg text-xs font-medium flex items-center justify-center gap-1">
+                          ■ Button
+                        </button>
+                        <button className="px-3 py-2 bg-zinc-200 text-black rounded-lg text-xs font-medium flex items-center justify-center gap-1">
+                          🖊 Button
+                        </button>
+                        <button className="px-3 py-2 bg-blue-900 text-white rounded-lg text-xs font-medium flex items-center justify-center gap-1">
+                          ● Button
+                        </button>
+                      </div>
+
+                      {/* Colorblind Simulator */}
+                      <div className="mt-3">
+                        <label className="text-xs text-zinc-600 font-medium block mb-1">Color Blindness Simulator:</label>
+                        <select className="w-full px-3 py-2 bg-white text-zinc-800 border border-zinc-300 rounded-lg text-sm">
+                          <option>Normal Vision</option>
+                          <option>Protanopia</option>
+                          <option>Deuteranopia</option>
+                          <option>Tritanopia</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Collections Section */}
+                    <div className="bg-white/95 rounded-xl p-4 border-2 border-zinc-300 shadow-lg">
+                      <div className="flex items-center justify-between mb-3">
+                        <h3 className="text-black font-bold">Collections</h3>
+                        <button className="p-1 text-zinc-500 hover:text-zinc-700">
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                          </svg>
+                        </button>
+                      </div>
+
+                      {/* Web Palette */}
+                      <div className="bg-zinc-100 rounded-lg p-3 mb-2 border border-zinc-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <svg className="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                            <span className="text-zinc-800 text-sm font-medium">♥ Web palet...</span>
+                            <span className="text-zinc-500 text-xs">8</span>
+                          </div>
+                          <div className="flex gap-1">
+                            <button className="p-1 text-zinc-500 hover:text-zinc-700">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+                            </button>
+                            <button className="p-1 text-zinc-500 hover:text-zinc-700">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                            </button>
+                            <button className="p-1 text-zinc-500 hover:text-zinc-700">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div className="flex gap-1.5">
+                          {['#000', '#8b9dc3', '#000', '#000', '#696969', '#fff', '#e0e0e0', '#999'].map((color, i) => (
+                            <div 
+                              key={i}
+                              className="w-8 h-8 rounded border-2 border-zinc-700"
+                              style={{ backgroundColor: color }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Untagged Collection */}
+                      <div className="bg-zinc-100 rounded-lg p-3 border border-zinc-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <svg className="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                            <span className="text-zinc-800 text-sm font-medium">♥ Untagged</span>
+                            <span className="text-zinc-500 text-xs">11</span>
+                          </div>
+                          <div className="flex gap-1">
+                            <button className="p-1 text-zinc-500 hover:text-zinc-700">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" /></svg>
+                            </button>
+                            <button className="p-1 text-zinc-500 hover:text-zinc-700">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                            </button>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-8 gap-1.5">
+                          {[COLORS.magenta, '#c47ac0', '#e88388', '#6ee787', '#996633', '#3b82f6', '#84cc16', '#dc2626', '#fff', '#e88388', '#000'].map((color, i) => (
+                            <div 
+                              key={i}
+                              className="w-8 h-8 rounded border-2 border-zinc-700"
+                              style={{ backgroundColor: color }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Navigation */}
+                <div className="bg-black px-4 py-3 flex items-center justify-around border-t-2 border-zinc-700">
+                  <button className="p-2 text-zinc-400 hover:text-white">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                  </button>
+                  <button className="p-2 text-zinc-400 hover:text-white">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                  </button>
+                  <button className="p-2 text-zinc-400 hover:text-white">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                  </button>
+                </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -231,7 +424,6 @@ const DemoPlayground = () => {
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
-  const [zoomedImage, setZoomedImage] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -239,50 +431,8 @@ export default function LandingPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') setZoomedImage(null);
-    };
-    if (zoomedImage) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
-    };
-  }, [zoomedImage]);
-
   return (
     <div className="min-h-screen bg-black text-zinc-200 selection:bg-[#d60cbd]/30 selection:text-white font-sans">
-      
-      {/* Lightbox Modal */}
-      {zoomedImage && (
-        <div 
-          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
-          onClick={() => setZoomedImage(null)}
-        >
-          <button
-            onClick={() => setZoomedImage(null)}
-            className="absolute top-4 right-4 p-2 bg-zinc-900 hover:bg-zinc-800 text-white rounded-full transition-colors z-10"
-            aria-label="Close"
-          >
-            <X size={24} />
-          </button>
-          
-          <div className="relative max-w-5xl max-h-[90vh] w-full" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={zoomedImage.src}
-              alt={zoomedImage.alt}
-              className="w-full h-full object-contain rounded-lg shadow-2xl"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 rounded-b-lg">
-              <p className="text-white text-center font-medium">{zoomedImage.alt}</p>
-            </div>
-          </div>
-        </div>
-      )}
-
       
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-zinc-800 py-3' : 'bg-transparent py-6'}`}>
@@ -298,7 +448,6 @@ export default function LandingPage() {
           
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
             <a href="#features" className="hover:text-white transition-colors">Features</a>
-            <a href="#gallery" className="hover:text-white transition-colors">Overview</a>
             <a href="#tech" className="hover:text-white transition-colors">Tech</a>
             <a href="#support" className="hover:text-white transition-colors">Support</a>
             <a href="#privacy" className="hover:text-white transition-colors">Privacy</a>
@@ -366,116 +515,9 @@ export default function LandingPage() {
             {/* Hero Visual / Demo */}
             <div className="flex-1 w-full max-w-lg lg:max-w-none relative z-10">
               <div className="absolute inset-0 rounded-3xl blur-3xl -z-10 opacity-20" style={{ backgroundImage: `linear-gradient(to top right, ${COLORS.magenta}, transparent)` }} />
-              <DemoPlayground />
+              <BrowserMockup />
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      {/* Screenshot Gallery Section */}
-      <section id="gallery" className="py-20 bg-[#050505] border-y border-zinc-900">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-4">App Overview</h2>
-            <p className="text-zinc-400">Minimalist design, powerful features.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            
-            {/* Capture 1 */}
-            <div className="space-y-4 group">
-               <div 
-                 className="bg-black rounded-2xl overflow-hidden border-4 border-black group-hover:border-[#84CC16] transition-all shadow-2xl relative cursor-pointer"
-                 onClick={() => setZoomedImage({ src: '/screenshots/capture-1.png', alt: 'Color Selection - IROLAB Interface' })}
-               >
-                  <img 
-                    src="/screenshots/capture-1.png" 
-                    alt="Eyedropper interface" 
-                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                  {/* Zoom indicator */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 backdrop-blur-[1px]">
-                    <div className="bg-black/80 text-white px-4 py-2 rounded-full flex items-center gap-2 border border-zinc-700">
-                      <ZoomIn size={18} />
-                      <span className="text-sm font-medium">Click to zoom</span>
-                    </div>
-                  </div>
-                  {/* Fallback if image not found */}
-                  <div className="hidden absolute inset-0 flex-col items-center justify-center text-zinc-600 bg-zinc-950 p-4 text-center">
-                    <ImageIcon size={48} className="mb-2 opacity-50" />
-                    <span className="text-xs font-mono">Screenshot placeholder<br/>Add your images to /public/screenshots/</span>
-                  </div>
-               </div>
-               <p className="text-center text-sm font-medium text-zinc-300 group-hover:text-[#84CC16] transition-colors">Color Selection</p>
-            </div>
-
-            {/* Capture 2 */}
-            <div className="space-y-4 group md:-mt-8">
-               <div 
-                 className="bg-black rounded-2xl overflow-hidden border-4 border-black group-hover:border-[#d60cbd] transition-all shadow-2xl shadow-[#d60cbd]/20 relative ring-2 ring-zinc-800 cursor-pointer"
-                 onClick={() => setZoomedImage({ src: '/screenshots/capture-2.png', alt: 'Test Area - Interactive Color Playground' })}
-               >
-                  <img 
-                    src="/screenshots/capture-2.png" 
-                    alt="Test area interface" 
-                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                  {/* Zoom indicator */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 backdrop-blur-[1px]">
-                    <div className="bg-black/80 text-white px-4 py-2 rounded-full flex items-center gap-2 border border-zinc-700">
-                      <ZoomIn size={18} />
-                      <span className="text-sm font-medium">Click to zoom</span>
-                    </div>
-                  </div>
-                  <div className="hidden absolute inset-0 flex-col items-center justify-center text-zinc-600 bg-zinc-950 p-4 text-center">
-                    <ImageIcon size={48} className="mb-2 opacity-50" />
-                    <span className="text-xs font-mono">Screenshot placeholder<br/>Add your images to /public/screenshots/</span>
-                  </div>
-               </div>
-               <p className="text-center text-sm font-bold text-white group-hover:text-[#d60cbd] transition-colors">Test Area</p>
-            </div>
-
-            {/* Capture 3 */}
-            <div className="space-y-4 group">
-               <div 
-                 className="bg-black rounded-2xl overflow-hidden border-4 border-black group-hover:border-[#84CC16] transition-all shadow-2xl relative cursor-pointer"
-                 onClick={() => setZoomedImage({ src: '/screenshots/capture-3.png', alt: 'Collections - Color Organization & History' })}
-               >
-                  <img 
-                    src="/screenshots/capture-3.png" 
-                    alt="Collections view" 
-                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
-                    }}
-                  />
-                  {/* Zoom indicator */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 backdrop-blur-[1px]">
-                    <div className="bg-black/80 text-white px-4 py-2 rounded-full flex items-center gap-2 border border-zinc-700">
-                      <ZoomIn size={18} />
-                      <span className="text-sm font-medium">Click to zoom</span>
-                    </div>
-                  </div>
-                  <div className="hidden absolute inset-0 flex-col items-center justify-center text-zinc-600 bg-zinc-950 p-4 text-center">
-                    <ImageIcon size={48} className="mb-2 opacity-50" />
-                    <span className="text-xs font-mono">Screenshot placeholder<br/>Add your images to /public/screenshots/</span>
-                  </div>
-               </div>
-               <p className="text-center text-sm font-medium text-zinc-300 group-hover:text-[#84CC16] transition-colors">Collections</p>
-            </div>
           </div>
         </div>
       </section>
