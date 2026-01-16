@@ -6,6 +6,19 @@
 > 📦 **Chrome Web Store** : _À venir_  
 > 💬 **Support** : support@irolab.app
 
+---
+
+## 🌐 Landing Page
+
+La page vitrine est disponible dans ce même dépôt :
+
+- 📁 **Projet web** : `/` (racine de ce dépôt)
+- 🚀 **Déploiement** : Automatique via GitHub → Vercel
+- 📖 **Guide rapide** : [QUICK_START.md](./QUICK_START.md)
+- 📚 **Doc complète** : [DEPLOYMENT.md](./DEPLOYMENT.md)
+
+---
+
 ## ✨ Fonctionnalités
 
 ### 🎯 Sélection de couleurs

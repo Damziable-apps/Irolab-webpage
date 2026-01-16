@@ -1,12 +1,20 @@
-# 🚀 Déploiement sur Vercel
+# 🚀 Déploiement GitHub → Vercel
 
-Ce guide vous explique comment déployer la landing page IROLAB sur Vercel.
+Ce guide vous explique comment déployer la landing page IROLAB sur Vercel via GitHub (workflow recommandé).
 
 ## Prérequis
 
+- Compte [GitHub](https://github.com) (gratuit)
 - Compte [Vercel](https://vercel.com) (gratuit)
-- Dépôt Git (GitHub, GitLab, ou Bitbucket)
 - Node.js 18+ installé localement
+
+## 📋 Workflow de déploiement
+
+```
+Code local → Git Push → GitHub → Vercel (auto-deploy)
+```
+
+Chaque commit sur `main` déploie automatiquement en production !
 
 ## Configuration locale
 
@@ -38,30 +46,68 @@ Le build sera généré dans le dossier `dist/`
 npm run preview
 ```
 
-## Déploiement sur Vercel
+## 🔗 Configuration GitHub → Vercel
 
-### Option 1 : Via l'interface Vercel (recommandé)
+### Étape 1 : Créer le dépôt GitHub
 
-1. **Connectez votre dépôt Git**
+1. **Initialisez Git** (si pas déjà fait)
+
+```bash
+git init
+git add .
+git commit -m "Initial commit: IROLAB landing page"
+```
+
+2. **Créez un repo sur GitHub**
+   - Allez sur [github.com/new](https://github.com/new)
+   - Nommez-le : `irolab-webpage` ou `irolab-landing`
+   - Laissez-le **public** ou **privé** selon vos préférences
+
+3. **Push vers GitHub**
+
+```bash
+git remote add origin https://github.com/VOTRE_USERNAME/irolab-webpage.git
+git branch -M main
+git push -u origin main
+```
+
+### Étape 2 : Connecter Vercel à GitHub (recommandé)
+
+1. **Connectez votre compte GitHub à Vercel**
    - Allez sur [vercel.com](https://vercel.com)
-   - Cliquez sur "Add New..." → "Project"
-   - Importez votre dépôt GitHub/GitLab/Bitbucket
+   - Cliquez sur "Sign Up" ou "Log In"
+   - Choisissez "Continue with GitHub"
+   - Autorisez Vercel à accéder à vos repos
 
-2. **Configuration du projet**
+2. **Importez votre projet**
+   - Cliquez sur "Add New..." → "Project"
+   - Sélectionnez votre dépôt `irolab-webpage`
+   - Si le repo n'apparaît pas, cliquez sur "Adjust GitHub App Permissions"
+
+3. **Configuration du projet**
+   
+   Vercel détecte automatiquement Vite, mais vérifiez :
    - **Framework Preset** : `Vite`
+   - **Root Directory** : `./` (racine)
    - **Build Command** : `npm run build`
    - **Output Directory** : `dist`
    - **Install Command** : `npm install`
 
-3. **Variables d'environnement** (optionnel)
-   - Vous pouvez ajouter des variables d'environnement si nécessaire
-   - Par exemple : `VITE_APP_VERSION`, `VITE_API_URL`, etc.
+   > 💡 Le fichier `vercel.json` configure déjà tout automatiquement !
 
-4. **Déployez**
+4. **Variables d'environnement** (optionnel)
+   
+   Si besoin, ajoutez des variables d'environnement :
+   - `VITE_APP_VERSION`
+   - `VITE_ANALYTICS_ID`
+   - etc.
+
+5. **Déployez**
    - Cliquez sur "Deploy"
-   - Vercel va automatiquement détecter la configuration grâce au fichier `vercel.json`
+   - Attendez 30-60 secondes
+   - ✅ Votre site est en ligne !
 
-### Option 2 : Via la CLI Vercel
+### Option alternative : Via la CLI Vercel
 
 1. **Installer la CLI Vercel**
 
@@ -107,14 +153,32 @@ Value: cname.vercel-dns.com
 
 4. Attendez la propagation DNS (peut prendre jusqu'à 48h, généralement ~15 min)
 
-## Déploiement automatique
+## 🔄 Déploiement automatique (CI/CD)
 
-Vercel va automatiquement :
-- ✅ Déployer chaque commit sur la branche principale en production
-- ✅ Créer des previews pour chaque Pull Request
-- ✅ Générer des URLs de preview uniques
-- ✅ Activer HTTPS automatiquement
-- ✅ Optimiser les assets (images, CSS, JS)
+Une fois Vercel connecté à GitHub, **tout est automatisé** :
+
+### Production (branche `main`)
+```bash
+git add .
+git commit -m "Update landing page"
+git push origin main
+```
+→ ✅ Déploiement automatique en production sur `irolab.app`
+
+### Preview (Pull Requests)
+1. Créez une branche : `git checkout -b feature/new-section`
+2. Faites vos modifications
+3. Créez une Pull Request sur GitHub
+→ ✅ Vercel génère automatiquement une URL de preview unique !
+
+### Ce que Vercel fait automatiquement :
+- ✅ Déploie chaque commit sur `main` en production
+- ✅ Crée des previews pour chaque Pull Request
+- ✅ Génère des URLs de preview uniques (ex: `irolab-webpage-abc123.vercel.app`)
+- ✅ Active HTTPS automatiquement (Let's Encrypt)
+- ✅ Optimise les assets (images, CSS, JS)
+- ✅ Purge le cache CDN automatiquement
+- ✅ Envoie des notifications Discord/Slack (si configuré)
 
 ## Performance et Optimisations
 
