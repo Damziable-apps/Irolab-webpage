@@ -33,18 +33,36 @@ const Button = ({ children, variant = 'primary', className = '', icon: Icon, ...
   const baseStyle = "inline-flex items-center justify-center px-6 py-3 text-base font-bold rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black";
   
   const variants = {
-    primary: `hover:opacity-90 text-white shadow-lg border border-transparent`,
+    primary: "hover:opacity-90 text-white shadow-lg border border-transparent",
     secondary: "bg-zinc-900 hover:bg-zinc-800 text-white border border-zinc-800",
-    outline: `bg-transparent hover:bg-zinc-900 text-[${COLORS.green}] border border-[${COLORS.green}]/50 hover:border-[${COLORS.green}]`,
-    glow: `bg-gradient-to-r from-[${COLORS.magenta}] to-[${COLORS.green}] text-white hover:opacity-90 shadow-lg shadow-[${COLORS.magenta}]/20 border border-transparent`
+    outline: "bg-transparent hover:bg-zinc-900 border",
+    glow: "text-white hover:opacity-90 shadow-lg border border-transparent"
   };
 
-  const style = variant === 'primary' ? { backgroundColor: 'rgb(214, 12, 189)', boxShadow: '0 10px 25px -5px rgba(214, 12, 189, 0.3)' } :
-                variant === 'glow' ? { backgroundImage: `linear-gradient(to right, ${COLORS.magenta}, #b00b9e)` } : 
-                variant === 'outline' ? { color: COLORS.green, borderColor: COLORS.green } : {};
+  const getInlineStyle = () => {
+    if (variant === 'primary') {
+      return { 
+        backgroundColor: 'rgb(214, 12, 189)', 
+        boxShadow: '0 10px 25px -5px rgba(214, 12, 189, 0.3)' 
+      };
+    }
+    if (variant === 'glow') {
+      return { 
+        backgroundImage: `linear-gradient(to right, ${COLORS.magenta}, #b00b9e)`,
+        boxShadow: `0 10px 25px -5px ${COLORS.magenta}20`
+      };
+    }
+    if (variant === 'outline') {
+      return { 
+        color: COLORS.green, 
+        borderColor: COLORS.green 
+      };
+    }
+    return {};
+  };
 
   return (
-    <button className={`${baseStyle} ${variants[variant === 'primary' || variant === 'glow' || variant === 'outline' ? 'custom' : variant]} ${className}`} style={style} {...props}>
+    <button className={`${baseStyle} ${variants[variant]} ${className}`} style={getInlineStyle()} {...props}>
       {Icon && <Icon className="w-5 h-5 mr-2" />}
       {children}
     </button>
