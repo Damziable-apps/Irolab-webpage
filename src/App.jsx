@@ -7,7 +7,6 @@ import {
   Layers, 
   Check, 
   Zap, 
-  Eye, 
   Code, 
   Copy, 
   Download,
@@ -15,7 +14,8 @@ import {
   Settings,
   Image as ImageIcon,
   X,
-  ZoomIn
+  ZoomIn,
+  Tags
 } from 'lucide-react';
 
 // --- Color Configuration (IROLAB Brand) ---
@@ -507,10 +507,10 @@ export default function LandingPage() {
               description="Interactive playground to test your color combinations."
             />
             <FeatureCard 
-              icon={Eye}
-              title="Accessibility"
-              description="Built-in Protanopia, Deuteranopia, Tritanopia simulations."
-              badge="WCAG"
+              icon={Tags}
+              title="Custom Palettes"
+              description="Save and organize your palettes with a smart tagging system."
+              badge="Tags"
             />
             <FeatureCard 
               icon={Code}
