@@ -10,11 +10,12 @@ import {
   Eye, 
   Code, 
   Copy, 
-  Coffee,
   Download,
   History,
   Settings,
-  Image as ImageIcon
+  Image as ImageIcon,
+  X,
+  ZoomIn
 } from 'lucide-react';
 
 // --- Color Configuration (IROLAB Brand) ---
@@ -209,6 +210,7 @@ const DemoPlayground = () => {
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
+  const [zoomedImage, setZoomedImage] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -216,8 +218,50 @@ export default function LandingPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') setZoomedImage(null);
+    };
+    if (zoomedImage) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [zoomedImage]);
+
   return (
     <div className="min-h-screen bg-black text-zinc-200 selection:bg-[#d60cbd]/30 selection:text-white font-sans">
+      
+      {/* Lightbox Modal */}
+      {zoomedImage && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setZoomedImage(null)}
+        >
+          <button
+            onClick={() => setZoomedImage(null)}
+            className="absolute top-4 right-4 p-2 bg-zinc-900 hover:bg-zinc-800 text-white rounded-full transition-colors z-10"
+            aria-label="Close"
+          >
+            <X size={24} />
+          </button>
+          
+          <div className="relative max-w-5xl max-h-[90vh] w-full" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={zoomedImage.src}
+              alt={zoomedImage.alt}
+              className="w-full h-full object-contain rounded-lg shadow-2xl"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 rounded-b-lg">
+              <p className="text-white text-center font-medium">{zoomedImage.alt}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
       
       {/* Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-zinc-800 py-3' : 'bg-transparent py-6'}`}>
@@ -239,7 +283,7 @@ export default function LandingPage() {
 
           <div className="flex items-center gap-3">
             <Button variant="secondary" className="hidden md:flex text-sm py-2 px-4 h-9" icon={Download}>
-              Download
+              Add to Chrome
             </Button>
           </div>
         </div>
@@ -310,70 +354,100 @@ export default function LandingPage() {
             <p className="text-zinc-400">Minimalist design, powerful features.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             
             {/* Capture 1 */}
             <div className="space-y-4 group">
-               <div className="bg-zinc-900 rounded-xl overflow-hidden aspect-[9/16] border border-zinc-800 group-hover:border-[#d60cbd]/50 transition-all shadow-2xl relative">
+               <div 
+                 className="bg-black rounded-2xl overflow-hidden border-4 border-black group-hover:border-[#84CC16] transition-all shadow-2xl relative cursor-pointer"
+                 onClick={() => setZoomedImage({ src: '/screenshots/capture-1.png', alt: 'Color Selection - IROLAB Interface' })}
+               >
                   <img 
                     src="/screenshots/capture-1.png" 
                     alt="Eyedropper interface" 
-                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
+                  {/* Zoom indicator */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 backdrop-blur-[1px]">
+                    <div className="bg-black/80 text-white px-4 py-2 rounded-full flex items-center gap-2 border border-zinc-700">
+                      <ZoomIn size={18} />
+                      <span className="text-sm font-medium">Click to zoom</span>
+                    </div>
+                  </div>
                   {/* Fallback if image not found */}
                   <div className="hidden absolute inset-0 flex-col items-center justify-center text-zinc-600 bg-zinc-950 p-4 text-center">
                     <ImageIcon size={48} className="mb-2 opacity-50" />
                     <span className="text-xs font-mono">Screenshot placeholder<br/>Add your images to /public/screenshots/</span>
                   </div>
                </div>
-               <p className="text-center text-sm font-medium text-zinc-300 group-hover:text-[#d60cbd] transition-colors">Eyedropper Interface</p>
+               <p className="text-center text-sm font-medium text-zinc-300 group-hover:text-[#84CC16] transition-colors">Color Selection</p>
             </div>
 
             {/* Capture 2 */}
             <div className="space-y-4 group md:-mt-8">
-               <div className="bg-zinc-900 rounded-xl overflow-hidden aspect-[9/16] border border-zinc-700 group-hover:border-[#d60cbd] transition-all shadow-2xl shadow-[#d60cbd]/10 relative">
+               <div 
+                 className="bg-black rounded-2xl overflow-hidden border-4 border-black group-hover:border-[#d60cbd] transition-all shadow-2xl shadow-[#d60cbd]/20 relative ring-2 ring-zinc-800 cursor-pointer"
+                 onClick={() => setZoomedImage({ src: '/screenshots/capture-2.png', alt: 'Test Area - Interactive Color Playground' })}
+               >
                   <img 
                     src="/screenshots/capture-2.png" 
-                    alt="Main menu interface" 
-                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                    alt="Test area interface" 
+                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
+                  {/* Zoom indicator */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 backdrop-blur-[1px]">
+                    <div className="bg-black/80 text-white px-4 py-2 rounded-full flex items-center gap-2 border border-zinc-700">
+                      <ZoomIn size={18} />
+                      <span className="text-sm font-medium">Click to zoom</span>
+                    </div>
+                  </div>
                   <div className="hidden absolute inset-0 flex-col items-center justify-center text-zinc-600 bg-zinc-950 p-4 text-center">
                     <ImageIcon size={48} className="mb-2 opacity-50" />
                     <span className="text-xs font-mono">Screenshot placeholder<br/>Add your images to /public/screenshots/</span>
                   </div>
                </div>
-               <p className="text-center text-sm font-bold text-white group-hover:text-[#d60cbd] transition-colors">Main Menu</p>
+               <p className="text-center text-sm font-bold text-white group-hover:text-[#d60cbd] transition-colors">Test Area</p>
             </div>
 
             {/* Capture 3 */}
             <div className="space-y-4 group">
-               <div className="bg-zinc-900 rounded-xl overflow-hidden aspect-[9/16] border border-zinc-800 group-hover:border-[#d60cbd]/50 transition-all shadow-2xl relative">
+               <div 
+                 className="bg-black rounded-2xl overflow-hidden border-4 border-black group-hover:border-[#84CC16] transition-all shadow-2xl relative cursor-pointer"
+                 onClick={() => setZoomedImage({ src: '/screenshots/capture-3.png', alt: 'Collections - Color Organization & History' })}
+               >
                   <img 
                     src="/screenshots/capture-3.png" 
-                    alt="Color history view" 
-                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
+                    alt="Collections view" 
+                    className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.style.display = 'none';
                       e.target.nextSibling.style.display = 'flex';
                     }}
                   />
+                  {/* Zoom indicator */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 backdrop-blur-[1px]">
+                    <div className="bg-black/80 text-white px-4 py-2 rounded-full flex items-center gap-2 border border-zinc-700">
+                      <ZoomIn size={18} />
+                      <span className="text-sm font-medium">Click to zoom</span>
+                    </div>
+                  </div>
                   <div className="hidden absolute inset-0 flex-col items-center justify-center text-zinc-600 bg-zinc-950 p-4 text-center">
                     <ImageIcon size={48} className="mb-2 opacity-50" />
                     <span className="text-xs font-mono">Screenshot placeholder<br/>Add your images to /public/screenshots/</span>
                   </div>
                </div>
-               <p className="text-center text-sm font-medium text-zinc-300 group-hover:text-[#d60cbd] transition-colors">History</p>
+               <p className="text-center text-sm font-medium text-zinc-300 group-hover:text-[#84CC16] transition-colors">Collections</p>
             </div>
           </div>
         </div>
@@ -480,7 +554,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="border-t border-zinc-900 bg-black py-12">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div className="col-span-1 md:col-span-2">
                <div className="flex items-center gap-2 font-bold text-xl tracking-tighter text-white mb-4">
                 <img 
@@ -501,19 +575,6 @@ export default function LandingPage() {
                 <li><a href="https://github.com/damienbrosseau/irolab" target="_blank" rel="noreferrer" className="hover:text-[#d60cbd] transition-colors">GitHub</a></li>
                 <li><a href="mailto:support@irolab.app" className="hover:text-[#d60cbd] transition-colors">Support</a></li>
               </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-4">Support</h4>
-              <a 
-                href="https://ko-fi.com/damienbrosseau" 
-                target="_blank" 
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#29abe0]/10 text-[#29abe0] hover:bg-[#29abe0]/20 border border-[#29abe0]/20 rounded-lg transition-colors"
-              >
-                <Coffee size={18} />
-                <span>Support on Ko-fi</span>
-              </a>
             </div>
           </div>
           
