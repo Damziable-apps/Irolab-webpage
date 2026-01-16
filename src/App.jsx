@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
   Pipette, 
   Palette, 
@@ -10,12 +10,10 @@ import {
   Eye, 
   Code, 
   Copy, 
-  RefreshCw,
   Coffee,
   Download,
   History,
   Settings,
-  Menu,
   Image as ImageIcon
 } from 'lucide-react';
 
@@ -225,12 +223,11 @@ export default function LandingPage() {
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/80 backdrop-blur-md border-b border-zinc-800 py-3' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
           <div className="flex items-center gap-2 font-bold text-xl tracking-tighter text-white">
-            <div 
-              className="w-8 h-8 rounded-lg flex items-center justify-center shadow-lg shadow-[#d60cbd]/20"
-              style={{ background: `linear-gradient(135deg, ${COLORS.magenta}, #a20990)` }}
-            >
-              <Pipette size={18} className="text-white transform -rotate-45" />
-            </div>
+            <img 
+              src="/pipette-icon.svg" 
+              alt="IROLAB Icon" 
+              className="w-8 h-8 rounded-lg shadow-lg shadow-[#84CC16]/20"
+            />
             IROLAB
           </div>
           
@@ -392,7 +389,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <FeatureCard 
-              icon={Pipette}
+              icon={() => <img src="/pipette-icon.svg" alt="Pipette" className="w-6 h-6" />}
               title="EyeDropper API"
               description="Select any color on your screen with native precision."
               badge="Native"
@@ -460,8 +457,8 @@ export default function LandingPage() {
                <div className="relative rounded-xl bg-zinc-950 border border-zinc-800 shadow-2xl p-6 font-mono text-sm">
                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r rounded-t-xl" style={{ backgroundImage: `linear-gradient(to right, ${COLORS.magenta}, ${COLORS.green})` }} />
                  
-                 <div className="mb-4 text-zinc-500">
-                   // Modern color management (OKLCH)
+                 <div className="mb-4 text-zinc-500 font-mono">
+                   {'// Modern color management (OKLCH)'}
                  </div>
                  
                  <CodeSnippet label="OKLCH CSS" code=".btn { background: oklch(0.65 0.25 45); }" />
@@ -486,7 +483,11 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-1 md:col-span-2">
                <div className="flex items-center gap-2 font-bold text-xl tracking-tighter text-white mb-4">
-                <Pipette size={20} style={{ color: COLORS.magenta }} />
+                <img 
+                  src="/pipette-icon.svg" 
+                  alt="IROLAB Icon" 
+                  className="w-5 h-5 rounded"
+                />
                 IROLAB
               </div>
               <p className="text-zinc-500 max-w-xs">
