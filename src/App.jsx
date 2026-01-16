@@ -614,7 +614,7 @@ export default function LandingPage() {
             </div>
 
             {/* How It Works Guide */}
-            <div className="mt-20 pt-16 border-t border-zinc-800">
+            <div id="how-it-works" className="mt-20 pt-16 border-t border-zinc-800">
               <div className="text-center mb-12">
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">How It Works</h3>
                 <p className="text-zinc-400">Get started with IROLAB in minutes. Follow these simple steps.</p>
