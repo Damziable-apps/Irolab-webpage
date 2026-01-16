@@ -124,4 +124,4 @@ npm ci
 
 **C'est tout !** Votre landing page IROLAB est en ligne 🚀
 
-Questions ? → support@irolab.app
+Questions ? → [GitHub Issues](https://github.com/Damziable-apps/Irolab/issues)

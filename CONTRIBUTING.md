@@ -145,8 +145,8 @@ Utilisez les [GitHub Issues](https://github.com/VOTRE_USERNAME/irolab-webpage/is
 
 ## 📞 Questions ?
 
-- 📧 Email : support@irolab.app
-- 💬 GitHub Issues : pour les questions techniques
+- 💬 GitHub Issues : [github.com/Damziable-apps/Irolab/issues](https://github.com/Damziable-apps/Irolab/issues)
+- All support is provided through GitHub Issues for transparency and community benefit
 
 ---
 

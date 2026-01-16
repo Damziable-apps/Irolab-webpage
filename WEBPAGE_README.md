@@ -157,7 +157,7 @@ MIT License - voir [LICENSE](../LICENSE)
 **Damien Brosseau**
 - 🌐 Website : [irolab.app](https://irolab.app)
 - ☕ Ko-fi : [ko-fi.com/damienbrosseau](https://ko-fi.com/damienbrosseau)
-- 📧 Email : support@irolab.app
+- 💬 Support : [GitHub Issues](https://github.com/Damziable-apps/Irolab/issues)
 
 ---
 

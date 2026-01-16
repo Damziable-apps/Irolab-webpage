@@ -4,7 +4,7 @@
 
 > 🌐 **Site web** : [irolab.app](https://irolab.app)  
 > 📦 **Chrome Web Store** : [IROLAB Extension](https://chromewebstore.google.com/detail/biopihomjliklkkenjijbahopjeefmle)  
-> 💬 **Support** : support@irolab.app
+> 💬 **Support** : [GitHub Issues](https://github.com/Damziable-apps/Irolab/issues)
 
 ---
 

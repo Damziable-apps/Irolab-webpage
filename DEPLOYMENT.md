@@ -232,7 +232,7 @@ vercel ls
 ## Support
 
 Pour toute question :
-- 📧 Email : support@irolab.app
+- 💬 Support : [GitHub Issues](https://github.com/Damziable-apps/Irolab/issues)
 - 📚 Docs Vercel : [vercel.com/docs](https://vercel.com/docs)
 
 ---

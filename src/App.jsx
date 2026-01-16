@@ -15,7 +15,9 @@ import {
   Tags,
   Mail,
   Shield,
-  HelpCircle
+  HelpCircle,
+  Github,
+  MessageCircle
 } from 'lucide-react';
 
 // --- Color Configuration (IROLAB Brand) ---
@@ -636,9 +638,9 @@ export default function LandingPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-20">
               <FeatureCard 
-                icon={Mail}
-                title="Email Support"
-                description="Contact us at support@irolab.app for technical questions, feature requests, or bug reports. We typically respond within 24-48 hours."
+                icon={Github}
+                title="GitHub Issues"
+                description="Report bugs, request features, or ask questions through our GitHub Issues tracker. Open source and transparent support."
               />
               <FeatureCard 
                 icon={Settings}
@@ -648,9 +650,9 @@ export default function LandingPage() {
             </div>
 
             <div className="mb-12 text-center">
-              <a href="mailto:support@irolab.app">
-                <Button variant="primary" icon={Mail}>
-                  Contact Support
+              <a href="https://github.com/Damziable-apps/Irolab/issues" target="_blank" rel="noreferrer">
+                <Button variant="primary" icon={MessageCircle}>
+                  Open an Issue
                 </Button>
               </a>
             </div>
@@ -808,10 +810,10 @@ export default function LandingPage() {
 
             <div className="mt-12 p-6 bg-black rounded-xl border border-zinc-800">
               <p className="text-zinc-400 text-sm text-center">
-                <strong className="text-white">Questions about privacy?</strong> Contact us at{' '}
-                <a href="mailto:support@irolab.app" className="text-[#d60cbd] hover:underline">support@irolab.app</a>
-                {' '}or review our full privacy policy on{' '}
-                <a href="https://github.com/damienbrosseau/irolab" target="_blank" rel="noreferrer" className="text-[#d60cbd] hover:underline">GitHub</a>.
+                <strong className="text-white">Questions about privacy?</strong> Open an issue on{' '}
+                <a href="https://github.com/Damziable-apps/Irolab/issues" target="_blank" rel="noreferrer" className="text-[#d60cbd] hover:underline">GitHub Issues</a>
+                {' '}or review our full privacy policy in the{' '}
+                <a href="https://github.com/Damziable-apps/Irolab" target="_blank" rel="noreferrer" className="text-[#d60cbd] hover:underline">repository</a>.
               </p>
             </div>
           </div>
@@ -839,8 +841,8 @@ export default function LandingPage() {
             <div>
               <h4 className="text-white font-bold mb-4">Links</h4>
               <ul className="space-y-2 text-zinc-400 text-sm">
-                <li><a href="https://github.com/damienbrosseau/irolab" target="_blank" rel="noreferrer" className="hover:text-[#d60cbd] transition-colors">GitHub</a></li>
-                <li><a href="mailto:support@irolab.app" className="hover:text-[#d60cbd] transition-colors">Support</a></li>
+                <li><a href="https://github.com/Damziable-apps/Irolab" target="_blank" rel="noreferrer" className="hover:text-[#d60cbd] transition-colors">GitHub</a></li>
+                <li><a href="https://github.com/Damziable-apps/Irolab/issues" target="_blank" rel="noreferrer" className="hover:text-[#d60cbd] transition-colors">Issues & Support</a></li>
               </ul>
             </div>
           </div>
