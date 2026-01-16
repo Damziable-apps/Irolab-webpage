@@ -3,17 +3,19 @@
 **Extension Chrome gratuite** Manifest V3 pour designers et développeurs. Choisissez, validez et partagez vos couleurs en toute simplicité avec synchronisation Cloud optionnelle.
 
 > 🌐 **Site web** : [irolab.app](https://irolab.app)  
-> 📦 **Chrome Web Store** : *À venir*  
+> 📦 **Chrome Web Store** : _À venir_  
 > 💬 **Support** : support@irolab.app
 
 ## ✨ Fonctionnalités
 
 ### 🎯 Sélection de couleurs
+
 - **EyeDropper API** : Pipette intégrée pour sélectionner n'importe quelle couleur à l'écran
 - **Bouton dynamique** : Le bouton "Pick a Color" prend la couleur sélectionnée comme arrière-plan avec texte adaptatif
 - **Extraction de site web** : Extrait automatiquement les couleurs d'un site web et les organise par tags
 
 ### 🎨 Zone de test interactive (Test Area)
+
 - Prévisualisation en temps réel de vos couleurs
 - Application de couleurs par drag & drop
 - Menu contextuel (clic droit) pour accéder rapidement à l'historique
@@ -21,6 +23,7 @@
 - Simulation de daltonisme (protanopie, deutéranopie, tritanopie)
 
 ### 📚 Historique et collections
+
 - Sauvegarde automatique des couleurs
 - Organisation par tags (sites web, projets, etc.)
 - Filtrage par tag et par source (eyedropper, website, playground)
@@ -28,78 +31,26 @@
 - Suppression des doublons automatique
 
 ### 🔄 Synchronisation Cloud (optionnelle)
+
 - Backend **Supabase** pour la synchronisation multi-appareils
 - Authentification email/password ou mode invité
 - Sync automatique toutes les 30 secondes
 - Indicateur visuel de l'état de synchronisation
 
 ### 🎨 Formats de couleur
+
 - **HEX** : `#FF5733`
 - **RGB** : `rgb(255, 87, 51)`
 - **HSL** : `hsl(14, 100%, 60%)`
 - **OKLCH** : `oklch(0.65 0.25 45)`
 
 ### 💡 Interface moderne
+
 - Menu déroulant vertical avec texte et icônes
 - Tips défilants dans le header pour guider l'utilisateur
 - Animations bounce et transitions fluides
 - Design responsive et accessible (WCAG AA)
 - Support de `prefers-reduced-motion`
-
-## 🚀 Installation
-
-### 1. Installer les dépendances
-```bash
-npm install
-```
-
-### 2. Configurer Supabase (optionnel)
-Si vous souhaitez activer la synchronisation Cloud :
-
-- Créer un projet [Supabase](https://supabase.com)
-- Créer un fichier `.env.local` à la racine du projet :
-```env
-VITE_SUPABASE_URL=https://xxxxx.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-```
-- Créer les tables via `supabase/schema.sql` (voir `SUPABASE_QUICK_START.md`)
-
-> **Note** : L'extension fonctionne en mode local sans Supabase. La synchronisation Cloud est optionnelle.
-
-### 3. Construire l'extension
-```bash
-npm run build
-```
-
-L'extension sera construite dans le dossier `.output/chrome-mv3/`.
-
-### 4. Charger l'extension dans Chrome
-1. Ouvrir `chrome://extensions/`
-2. Activer le **mode développeur** (toggle en haut à droite)
-3. Cliquer sur **"Charger l'extension non empaquetée"**
-4. Sélectionner le dossier `.output/chrome-mv3/`
-
-## 🛠 Développement
-
-### Mode développement avec hot reload
-```bash
-npm run dev
-```
-
-### Lancer les tests
-```bash
-npm test
-```
-
-### Build de production
-```bash
-npm run build
-```
-
-### Packager pour le Chrome Web Store
-```bash
-npm run package
-```
 
 ## 📦 Structure du projet
 
@@ -163,6 +114,7 @@ irolab/
 ## 🌐 Plateformes et Services
 
 ### Infrastructure
+
 - **[Vercel](https://vercel.com)** : Hébergement de la vitrine web (irolab.app)
 - **[Supabase](https://supabase.com)** : Backend as a Service
   - Authentification (email/password)
@@ -171,6 +123,7 @@ irolab/
   - Row Level Security (RLS)
 
 ### Services Email
+
 - **[Resend](https://resend.com)** : Service d'envoi d'emails transactionnels
   - Emails de confirmation d'inscription
   - Réinitialisation de mot de passe
@@ -180,7 +133,9 @@ irolab/
   - Template personnalisé aux couleurs IROLAB
 
 ### Configuration Email (Supabase)
+
 Pour configurer l'envoi d'emails dans Supabase :
+
 1. Aller dans **Settings** → **Authentication** → **SMTP Settings**
 2. Activer **Custom SMTP**
 3. Utiliser les credentials Resend :
@@ -204,17 +159,20 @@ Voir `SUPABASE_EMAIL_SETUP.md` pour plus de détails.
 ## 📚 Documentation
 
 ### Configuration et Setup
+
 - **Démarrage rapide** : `SUPABASE_QUICK_START.md`
 - **Setup Supabase complet** : `SUPABASE_SETUP.md`
 - **Configuration emails** : `SUPABASE_EMAIL_SETUP.md`
 - **Setup Vercel & Vitrine web** : `VERCEL_SETUP.md`
 
 ### Architecture et Tests
+
 - **Architecture du projet** : `docs/ARCHITECTURE.md`
 - **Guide de test** : `TEST_GUIDE.md`
 - **Guide de déploiement** : `DEPLOYMENT_GUIDE.md`
 
 ### Chrome Web Store
+
 - **Référence rapide** : `CHROME_STORE_QUICK_REFERENCE.md`
 - **Justifications de confidentialité** : `CHROME_STORE_PRIVACY_JUSTIFICATIONS.md`
 
@@ -233,4 +191,3 @@ Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou un
 ---
 
 **IROLAB** - Simplifie ton workflow couleur : choisis, valide et partage 🎨
-
