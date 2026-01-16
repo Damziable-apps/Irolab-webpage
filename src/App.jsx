@@ -15,7 +15,10 @@ import {
   Image as ImageIcon,
   X,
   ZoomIn,
-  Tags
+  Tags,
+  Mail,
+  Shield,
+  HelpCircle
 } from 'lucide-react';
 
 // --- Color Configuration (IROLAB Brand) ---
@@ -297,6 +300,8 @@ export default function LandingPage() {
             <a href="#features" className="hover:text-white transition-colors">Features</a>
             <a href="#gallery" className="hover:text-white transition-colors">Overview</a>
             <a href="#tech" className="hover:text-white transition-colors">Tech</a>
+            <a href="#support" className="hover:text-white transition-colors">Support</a>
+            <a href="#privacy" className="hover:text-white transition-colors">Privacy</a>
           </div>
 
           <div className="flex items-center gap-3">
@@ -569,6 +574,126 @@ export default function LandingPage() {
                </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* Support Section */}
+      <section id="support" className="py-20 bg-black border-t border-zinc-900">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-sm font-medium mb-6"
+                   style={{ color: COLORS.green }}>
+                <HelpCircle size={16} />
+                We're here to help
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Support</h2>
+              <p className="text-zinc-400 text-lg">Get assistance with IROLAB and make the most of your color workflow.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <FeatureCard 
+                icon={Mail}
+                title="Email Support"
+                description="Contact us at support@irolab.app for technical questions, feature requests, or bug reports. We typically respond within 24-48 hours."
+              />
+              <FeatureCard 
+                icon={Code}
+                title="GitHub Issues"
+                description="Report bugs or suggest features on our GitHub repository. Open source contributors are welcome!"
+              />
+              <FeatureCard 
+                icon={Settings}
+                title="Documentation"
+                description="Find guides, tutorials, and tips in our comprehensive documentation to master every feature."
+              />
+              <FeatureCard 
+                icon={Cloud}
+                title="Community"
+                description="Join our growing community of designers and developers. Share your palettes and get inspired!"
+              />
+            </div>
+
+            <div className="mt-12 text-center">
+              <a href="mailto:support@irolab.app">
+                <Button variant="primary" icon={Mail}>
+                  Contact Support
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Privacy Section */}
+      <section id="privacy" className="py-20 bg-[#050505] border-t border-zinc-900">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-sm font-medium mb-6"
+                   style={{ color: COLORS.magenta }}>
+                <Shield size={16} />
+                Your data, your control
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Privacy First</h2>
+              <p className="text-zinc-400 text-lg">We take your privacy seriously. Here's how we protect your data.</p>
+            </div>
+
+            <div className="space-y-6">
+              <div className="p-6 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                  <Check size={20} style={{ color: COLORS.green }} />
+                  No Tracking
+                </h3>
+                <p className="text-zinc-400 leading-relaxed">
+                  IROLAB doesn't collect analytics, usage data, or any personal information without your explicit consent. 
+                  Your color picks stay on your device unless you choose to enable cloud sync.
+                </p>
+              </div>
+
+              <div className="p-6 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                  <Check size={20} style={{ color: COLORS.green }} />
+                  Optional Cloud Sync
+                </h3>
+                <p className="text-zinc-400 leading-relaxed">
+                  Cloud synchronization through Supabase is completely optional. If you choose to enable it, 
+                  your data is encrypted and stored securely with industry-standard security practices.
+                </p>
+              </div>
+
+              <div className="p-6 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                  <Check size={20} style={{ color: COLORS.green }} />
+                  Open Source
+                </h3>
+                <p className="text-zinc-400 leading-relaxed">
+                  IROLAB is open source under MIT License. You can review our code on GitHub and verify 
+                  exactly what the extension does. Transparency is our commitment to you.
+                </p>
+              </div>
+
+              <div className="p-6 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl">
+                <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                  <Check size={20} style={{ color: COLORS.green }} />
+                  Minimal Permissions
+                </h3>
+                <p className="text-zinc-400 leading-relaxed">
+                  We request only the permissions necessary for core functionality: active tab access for color extraction 
+                  and storage for saving your palettes locally. No invasive permissions required.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-12 p-6 bg-black rounded-xl border border-zinc-800">
+              <p className="text-zinc-400 text-sm text-center">
+                <strong className="text-white">Questions about privacy?</strong> Contact us at{' '}
+                <a href="mailto:support@irolab.app" className="text-[#d60cbd] hover:underline">support@irolab.app</a>
+                {' '}or review our full privacy policy on{' '}
+                <a href="https://github.com/damienbrosseau/irolab" target="_blank" rel="noreferrer" className="text-[#d60cbd] hover:underline">GitHub</a>.
+              </p>
+            </div>
           </div>
         </div>
       </section>
