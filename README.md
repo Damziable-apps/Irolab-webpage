@@ -3,7 +3,7 @@
 **Extension Chrome gratuite** Manifest V3 pour designers et développeurs. Choisissez, validez et partagez vos couleurs en toute simplicité avec synchronisation Cloud optionnelle.
 
 > 🌐 **Site web** : [irolab.app](https://irolab.app)  
-> 📦 **Chrome Web Store** : _À venir_  
+> 📦 **Chrome Web Store** : [IROLAB Extension](https://chromewebstore.google.com/detail/biopihomjliklkkenjijbahopjeefmle)  
 > 💬 **Support** : support@irolab.app
 
 ---

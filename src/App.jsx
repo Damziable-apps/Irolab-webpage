@@ -282,9 +282,11 @@ export default function LandingPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button variant="primary" className="hidden md:flex text-sm py-2 px-4 h-9" icon={Download}>
-              Add to Chrome
-            </Button>
+            <a href="https://chromewebstore.google.com/detail/biopihomjliklkkenjijbahopjeefmle" target="_blank" rel="noreferrer">
+              <Button variant="primary" className="hidden md:flex text-sm py-2 px-4 h-9" icon={Download}>
+                Add to Chrome
+              </Button>
+            </a>
           </div>
         </div>
       </nav>
@@ -325,9 +327,11 @@ export default function LandingPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <Button variant="primary" icon={Download} className="w-full sm:w-auto">
-                  Add to Chrome
-                </Button>
+                <a href="https://chromewebstore.google.com/detail/biopihomjliklkkenjijbahopjeefmle" target="_blank" rel="noreferrer" className="w-full sm:w-auto">
+                  <Button variant="primary" icon={Download} className="w-full sm:w-auto">
+                    Add to Chrome
+                  </Button>
+                </a>
               </div>
 
               <div className="mt-8 flex items-center justify-center lg:justify-start gap-4 text-sm text-zinc-500">
