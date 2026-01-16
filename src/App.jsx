@@ -299,7 +299,6 @@ export default function LandingPage() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
             <a href="#features" className="hover:text-white transition-colors">Features</a>
             <a href="#gallery" className="hover:text-white transition-colors">Overview</a>
-            <a href="#how-it-works" className="hover:text-white transition-colors">How It Works</a>
             <a href="#tech" className="hover:text-white transition-colors">Tech</a>
             <a href="#support" className="hover:text-white transition-colors">Support</a>
             <a href="#privacy" className="hover:text-white transition-colors">Privacy</a>
@@ -527,97 +526,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 bg-[#050505] border-t border-zinc-900">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">How It Works</h2>
-            <p className="text-zinc-400 text-lg">Get started with IROLAB in minutes. Follow these simple steps.</p>
-          </div>
-
-          <div className="max-w-4xl mx-auto space-y-8">
-            
-            {/* Step 1 */}
-            <div className="flex gap-6 items-start group">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
-                   style={{ borderColor: COLORS.magenta, backgroundColor: 'transparent' }}>
-                1
-              </div>
-              <div className="flex-1 pt-2">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#d60cbd] transition-colors">Install the Extension</h3>
-                <p className="text-zinc-400 leading-relaxed mb-3">
-                  Add IROLAB to Chrome from the Chrome Web Store. The extension is free, lightweight, and respects your privacy.
-                </p>
-                <a href="https://chromewebstore.google.com/detail/biopihomjliklkkenjijbahopjeefmle" target="_blank" rel="noreferrer">
-                  <Button variant="outline" className="text-xs py-2 px-4 h-8">
-                    Go to Chrome Store
-                  </Button>
-                </a>
-              </div>
-            </div>
-
-            {/* Step 2 */}
-            <div className="flex gap-6 items-start group">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
-                   style={{ borderColor: COLORS.magenta, backgroundColor: 'transparent' }}>
-                2
-              </div>
-              <div className="flex-1 pt-2">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#d60cbd] transition-colors">Pick Colors</h3>
-                <p className="text-zinc-400 leading-relaxed">
-                  Click the extension icon and use the EyeDropper to pick any color from your screen. Colors are automatically saved to your history with support for HEX, RGB, HSL, and OKLCH formats.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="flex gap-6 items-start group">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
-                   style={{ borderColor: COLORS.magenta, backgroundColor: 'transparent' }}>
-                3
-              </div>
-              <div className="flex-1 pt-2">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#d60cbd] transition-colors">Extract Site Colors</h3>
-                <p className="text-zinc-400 leading-relaxed">
-                  Visit any website and use the "Extract Website Colors" feature to automatically capture the entire color palette used on the page. Perfect for design inspiration!
-                </p>
-              </div>
-            </div>
-
-            {/* Step 4 */}
-            <div className="flex gap-6 items-start group">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
-                   style={{ borderColor: COLORS.magenta, backgroundColor: 'transparent' }}>
-                4
-              </div>
-              <div className="flex-1 pt-2">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#d60cbd] transition-colors">Test & Validate</h3>
-                <p className="text-zinc-400 leading-relaxed">
-                  Use the interactive Test Area to preview color combinations and check accessibility (WCAG AA/AAA). Test colorblind simulations to ensure your palette works for everyone.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 5 */}
-            <div className="flex gap-6 items-start group">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
-                   style={{ borderColor: COLORS.green, backgroundColor: 'transparent' }}>
-                5
-              </div>
-              <div className="flex-1 pt-2">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#05d723] transition-colors">Sync Across Devices (Optional)</h3>
-                <p className="text-zinc-400 leading-relaxed">
-                  Enable cloud sync to access your color palettes on all your devices. Your data is encrypted and stored securely with Supabase. No sync? No problem—everything works locally too.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
       {/* Tech Stack */}
-      <section id="tech" className="py-20 overflow-hidden relative border-t border-zinc-900 bg-black">
+      <section id="tech" className="py-20 overflow-hidden relative border-t border-zinc-900 bg-[#050505]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             
@@ -682,28 +592,114 @@ export default function LandingPage() {
               <p className="text-zinc-400 text-lg">Get assistance with IROLAB and make the most of your color workflow.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-20">
               <FeatureCard 
                 icon={Mail}
                 title="Email Support"
                 description="Contact us at support@irolab.app for technical questions, feature requests, or bug reports. We typically respond within 24-48 hours."
               />
-              <a href="#how-it-works" className="block">
-                <FeatureCard 
-                  icon={Settings}
-                  title="How It Works"
-                  description="Learn how to use IROLAB with our step-by-step guide covering all features from color picking to cloud sync."
-                />
-              </a>
+              <FeatureCard 
+                icon={Settings}
+                title="How It Works"
+                description="Learn how to use IROLAB with our step-by-step guide covering all features from color picking to cloud sync."
+              />
             </div>
 
-            <div className="mt-12 text-center">
+            <div className="mb-12 text-center">
               <a href="mailto:support@irolab.app">
                 <Button variant="primary" icon={Mail}>
                   Contact Support
                 </Button>
               </a>
             </div>
+
+            {/* How It Works Guide */}
+            <div className="mt-20 pt-16 border-t border-zinc-800">
+              <div className="text-center mb-12">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">How It Works</h3>
+                <p className="text-zinc-400">Get started with IROLAB in minutes. Follow these simple steps.</p>
+              </div>
+
+              <div className="space-y-8">
+                
+                {/* Step 1 */}
+                <div className="flex gap-6 items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
+                       style={{ borderColor: COLORS.magenta, backgroundColor: 'transparent' }}>
+                    1
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#d60cbd] transition-colors">Install the Extension</h4>
+                    <p className="text-zinc-400 leading-relaxed mb-3">
+                      Add IROLAB to Chrome from the Chrome Web Store. The extension is free, lightweight, and respects your privacy.
+                    </p>
+                    <a href="https://chromewebstore.google.com/detail/biopihomjliklkkenjijbahopjeefmle" target="_blank" rel="noreferrer">
+                      <Button variant="outline" className="text-xs py-2 px-4 h-8">
+                        Go to Chrome Store
+                      </Button>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="flex gap-6 items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
+                       style={{ borderColor: COLORS.magenta, backgroundColor: 'transparent' }}>
+                    2
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#d60cbd] transition-colors">Pick Colors</h4>
+                    <p className="text-zinc-400 leading-relaxed">
+                      Click the extension icon and use the EyeDropper to pick any color from your screen. Colors are automatically saved to your history with support for HEX, RGB, HSL, and OKLCH formats.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="flex gap-6 items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
+                       style={{ borderColor: COLORS.magenta, backgroundColor: 'transparent' }}>
+                    3
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#d60cbd] transition-colors">Extract Site Colors</h4>
+                    <p className="text-zinc-400 leading-relaxed">
+                      Visit any website and use the "Extract Website Colors" feature to automatically capture the entire color palette used on the page. Perfect for design inspiration!
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 4 */}
+                <div className="flex gap-6 items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
+                       style={{ borderColor: COLORS.magenta, backgroundColor: 'transparent' }}>
+                    4
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#d60cbd] transition-colors">Test & Validate</h4>
+                    <p className="text-zinc-400 leading-relaxed">
+                      Use the interactive Test Area to preview color combinations and check accessibility (WCAG AA/AAA). Test colorblind simulations to ensure your palette works for everyone.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Step 5 */}
+                <div className="flex gap-6 items-start group">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl border-2 transition-all duration-300"
+                       style={{ borderColor: COLORS.green, backgroundColor: 'transparent' }}>
+                    5
+                  </div>
+                  <div className="flex-1 pt-2">
+                    <h4 className="text-xl font-bold text-white mb-2 group-hover:text-[#05d723] transition-colors">Sync Across Devices (Optional)</h4>
+                    <p className="text-zinc-400 leading-relaxed">
+                      Enable cloud sync to access your color palettes on all your devices. Your data is encrypted and stored securely with Supabase. No sync? No problem—everything works locally too.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
