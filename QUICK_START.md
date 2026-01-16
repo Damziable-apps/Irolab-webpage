@@ -7,12 +7,17 @@ Guide de démarrage ultra-rapide pour déployer votre landing page sur Vercel vi
 ### 1️⃣ Installation locale (1 min)
 
 ```bash
-cd /Users/brosseaudamien/Projets_Web/Irolab-webpage
+# Clonez ou naviguez vers le dossier du projet
+cd irolab-webpage
+
+# Installez les dépendances
 npm install
+
+# Lancez le serveur de développement
 npm run dev
 ```
 
-✅ Ouvrez http://localhost:5173
+✅ Ouvrez http://localhost:3000 (s'ouvre automatiquement)
 
 ### 2️⃣ Ajout des screenshots (1 min)
 

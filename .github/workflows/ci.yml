@@ -29,7 +29,6 @@ jobs:
     
     - name: 🔍 Run ESLint
       run: npx eslint src --ext .js,.jsx --max-warnings 0
-      continue-on-error: true
     
     - name: 🏗️ Build production
       run: npm run build

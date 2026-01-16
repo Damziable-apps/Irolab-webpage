@@ -30,7 +30,7 @@ npm install
 npm run dev
 ```
 
-L'application sera accessible sur `http://localhost:5173`
+L'application sera accessible sur `http://localhost:3000` (s'ouvre automatiquement)
 
 ### 3. Build de production
 

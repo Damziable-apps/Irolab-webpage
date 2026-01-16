@@ -29,7 +29,7 @@ npm install
 npm run dev
 ```
 
-Ouvre [http://localhost:5173](http://localhost:5173)
+Ouvre [http://localhost:3000](http://localhost:3000) (s'ouvre automatiquement)
 
 ### Build de production
 
