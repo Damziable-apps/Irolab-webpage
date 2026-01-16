@@ -592,26 +592,16 @@ export default function LandingPage() {
               <p className="text-zinc-400 text-lg">Get assistance with IROLAB and make the most of your color workflow.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               <FeatureCard 
                 icon={Mail}
                 title="Email Support"
                 description="Contact us at support@irolab.app for technical questions, feature requests, or bug reports. We typically respond within 24-48 hours."
               />
               <FeatureCard 
-                icon={Code}
-                title="GitHub Issues"
-                description="Report bugs or suggest features on our GitHub repository. Open source contributors are welcome!"
-              />
-              <FeatureCard 
                 icon={Settings}
-                title="Documentation"
-                description="Find guides, tutorials, and tips in our comprehensive documentation to master every feature."
-              />
-              <FeatureCard 
-                icon={Cloud}
-                title="Community"
-                description="Join our growing community of designers and developers. Share your palettes and get inspired!"
+                title="How It Works"
+                description="Learn how to use IROLAB with our step-by-step guide covering all features from color picking to cloud sync."
               />
             </div>
 
